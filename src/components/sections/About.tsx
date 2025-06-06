@@ -59,7 +59,7 @@ const About: React.FC = () => {
             <div className="relative z-10">
               <div className="card-neumorphic overflow-hidden rounded-2xl">
                 <img 
-                  src="https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg" 
+                  src="https://web.facebook.com/photo/?fbid=658898706650172&set=a.104627525410629" 
                   alt="Ravindu Perera working" 
                   className="w-full h-auto rounded-2xl transform hover:scale-105 transition-transform duration-500"
                 />
@@ -105,7 +105,7 @@ const About: React.FC = () => {
               custom={0}
               className="text-2xl md:text-3xl font-semibold mb-4"
             >
-              Full-Stack Developer Student <span className="text-primary-500">@</span> iCET | UCSC Undergraduate
+              Full-Stack Developer Student <span className="text-primary-500">@</span> iCET | UOM Undergraduate
             </motion.h3>
             
             <motion.p
@@ -113,7 +113,7 @@ const About: React.FC = () => {
               custom={1}
               className="text-dark-600 dark:text-light-300 mb-6"
             >
-              I'm a passionate Full-Stack Developer from Sri Lanka with a strong focus on creating efficient, scalable, and user-friendly solutions. I'm currently advancing my skills at iCET while pursuing my undergraduate degree at UCSC.
+              I'm a passionate Full-Stack Developer from Sri Lanka with a strong focus on creating efficient, scalable, and user-friendly solutions. I'm currently advancing my skills at iCET while pursuing my undergraduate degree at UOM.
             </motion.p>
             
             <motion.p

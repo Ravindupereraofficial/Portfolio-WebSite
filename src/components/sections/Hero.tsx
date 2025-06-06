@@ -126,7 +126,7 @@ const Hero: React.FC = () => {
               <div className="card-neumorphic p-3 rounded-full">
                 <div className="overflow-hidden rounded-full w-64 h-64 sm:w-80 sm:h-80 ring-4 ring-primary-500/20">
                   <img 
-                    src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg" 
+                    src="https://web.facebook.com/photo/?fbid=658898706650172&set=a.104627525410629" 
                     alt="Ravindu Perera" 
                     className="w-full h-full object-cover"
                   />
