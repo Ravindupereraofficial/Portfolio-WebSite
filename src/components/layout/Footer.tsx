@@ -17,17 +17,17 @@ const Footer: React.FC = () => {
     { 
       name: 'GitHub', 
       icon: <Github size={20} />, 
-      url: 'https://github.com/ravindu-perera' 
+      url: 'https://github.com/Ravindupereraofficial' 
     },
     { 
       name: 'LinkedIn', 
       icon: <Linkedin size={20} />, 
-      url: 'https://linkedin.com/in/ravindu-perera' 
+      url: 'https://www.linkedin.com/in/ravindu-perera-/' 
     },
     { 
       name: 'Email', 
       icon: <Mail size={20} />, 
-      url: 'mailto:contact@ravindu.dev' 
+      url: 'mailto:contact@ravinduperera@gmail.com' 
     }
   ];
 

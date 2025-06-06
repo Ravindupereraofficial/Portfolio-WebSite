@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Send, MapPin, Phone, Mail, CheckCircle } from 'lucide-react';
 import { useCursor } from '../../context/CursorContext';
+import emailjs from 'emailjs-com'; // Make sure to install this package
 
 const Contact: React.FC = () => {
   const { setIsHovering } = useCursor();
@@ -29,17 +30,26 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setFormStatus('submitting');
 
-    // Simulate form submission
-    setTimeout(() => {
+    emailjs.send(
+      'service_ihbrplh',       // Your service ID
+      'template_1uoeqlw',      // Your template ID
+      formData,                // The form data to send
+      '5b4cr48IOSiyNb7-A'      // Your user ID (public key)
+    )
+    .then(() => {
       setFormStatus('success');
       if (formRef.current) formRef.current.reset();
       setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset status after 5 seconds
       setTimeout(() => {
         setFormStatus('idle');
       }, 5000);
-    }, 1500);
+    })
+    .catch(() => {
+      setFormStatus('error');
+      setTimeout(() => {
+        setFormStatus('idle');
+      }, 5000);
+    });
   };
 
   const contactInfo = [
@@ -56,7 +66,7 @@ const Contact: React.FC = () => {
     {
       icon: <Mail size={24} className="text-primary-500" />,
       title: "Email",
-      value: "contact@ravinduperera@gmail.com"
+      value: "contact.ravinduperera@gmail.com"
     }
   ];
 
@@ -96,6 +106,15 @@ const Contact: React.FC = () => {
                   <CheckCircle className="mx-auto mb-4 text-success-600 dark:text-success-400" size={48} />
                   <h4 className="text-xl font-semibold mb-2 text-success-700 dark:text-success-300">Message Sent!</h4>
                   <p className="text-success-600 dark:text-success-400">Thank you for your message. I'll get back to you soon.</p>
+                </motion.div>
+              ) : formStatus === 'error' ? (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-error-100 dark:bg-error-900/30 p-6 rounded-xl text-center"
+                >
+                  <h4 className="text-xl font-semibold mb-2 text-error-700 dark:text-error-300">Oops! Something went wrong.</h4>
+                  <p className="text-error-600 dark:text-error-400">Please try again later.</p>
                 </motion.div>
               ) : (
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
@@ -227,23 +246,10 @@ const Contact: React.FC = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="rounded-xl overflow-hidden h-64 card-glass"
-            >
-              <div className="relative w-full h-full">
-                <img 
-                  src="https://images.pexels.com/photos/3902882/pexels-photo-3902882.jpeg" 
-                  alt="Map" 
-                  className="w-full h-full object-cover opacity-70"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-800/70 to-transparent flex items-end p-6">
-                  <div className="text-white">
-                    <h4 className="text-xl font-semibold mb-1">Based in</h4>
-                    <p>Colombo, Sri Lanka</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="h-64 rounded-xl bg-gradient-to-r from-primary-500 to-secondary-500"
+              aria-label="Map placeholder"
+            />
           </motion.div>
         </div>
       </div>
