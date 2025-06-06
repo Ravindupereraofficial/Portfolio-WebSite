@@ -27,9 +27,9 @@ const Projects: React.FC = () => {
       id: 1,
       title: 'Mos Burger',
       description: 'A restaurant management system with online ordering capabilities, reservation management, and admin dashboard.',
-      image: 'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg',
+      image: '/public/mos.png',
       category: ['Frontend', 'Backend'],
-      technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
+      technologies: ['Springboot', 'js','Mysql'],
       github: '#',
       live: '#'
     },
@@ -39,7 +39,7 @@ const Projects: React.FC = () => {
       description: 'Ecomerce grocery delivery application with real-time tracking and order management.',
       image: 'https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg',
       category: ['Frontend', 'Backend'],
-      technologies: ['Angular', 'Spring Boot', 'MySQL', 'AWS'],
+      technologies: ['Express', 'Reacy', 'MongoDB', 'Cloudinary'],
       github: '#',
       live: '#'
     },
@@ -47,11 +47,11 @@ const Projects: React.FC = () => {
       id: 3,
       title: 'Askify',
       description: 'Q&A platform for developers with markdown support, voting system and user reputation.',
-      image: 'https://images.pexels.com/photos/7149165/pexels-photo-7149165.jpeg',
-      category: ['Frontend', 'Backend'],
-      technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
-      github: '#',
-      live: '#'
+      image: '/public/askify.png',
+      category: ['Frontend'],
+      technologies: ['JavaScript','SpeechSynthesis','Gemini'],
+      github: 'https://github.com/Ravindupereraofficial/Askify-Online_English_Learning_Platform',
+      live: 'https://ravindupereraofficial.github.io/Askify-Online_English_Learning_Platform/'
     },
     {
       id: 4,
