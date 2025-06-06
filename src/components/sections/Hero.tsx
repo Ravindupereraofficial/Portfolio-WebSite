@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
               className="flex flex-wrap gap-4"
             >
               <a 
-                href="#" 
+                href="https://drive.google.com/file/d/1rN0tvUV7clcj0X7aTd_GMunonxdFfNv1/view?usp=sharing" 
                 className="btn-primary flex items-center gap-2"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
