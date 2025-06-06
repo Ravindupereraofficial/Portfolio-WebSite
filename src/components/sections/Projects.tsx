@@ -37,10 +37,10 @@ const Projects: React.FC = () => {
       id: 2,
       title: 'Ecomerce Grocery Delivery App',
       description: 'Ecomerce grocery delivery application with real-time tracking and order management.',
-      image: 'https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg',
+      image: '/public/ecom.png',
       category: ['Frontend', 'Backend'],
-      technologies: ['Express', 'Reacy', 'MongoDB', 'Cloudinary'],
-      github: '#',
+      technologies: ['Express', 'React', 'MongoDB', 'Cloudinary'],
+      github: 'https://github.com/Ravindupereraofficial/Grocery_Delivery_Ecom_BackEnd',
       live: '#'
     },
     {
@@ -66,20 +66,21 @@ const Projects: React.FC = () => {
       id: 5,
       title: 'LibraEase',
       description: 'Modern library management system with book tracking, user accounts, and reservation features.',
-      image: 'https://images.pexels.com/photos/1290141/pexels-photo-1290141.jpeg',
+      image: '/public/library.png',
       category: ['Frontend', 'Backend'],
       technologies: ['Java', 'JavaFX', 'MySQL'],
-      github: '#'
+      github: 'https://github.com/Ravindupereraofficial/LibraEase-Library-Management-System'
     },
     {
-      id: 6,
-      title: 'Traffic Light Controller',
-      description: 'Intelligent traffic control system simulation with machine learning for optimizing traffic flow.',
-      image: 'https://images.pexels.com/photos/1755683/pexels-photo-1755683.jpeg',
-      category: ['Backend'],
-      technologies: ['Java', 'Python', 'TensorFlow'],
-      github: '#'
-    }
+  id: 6,
+  title: 'BOC Bank Digital Assistance & Feedback System',
+  description: 'Developed in March 2025, this system includes three responsive web applications now in use at the BOC Bank Monaragala Branch. Features include a QR-based ATM/CRM guidance system, a feedback app using Supabase, and a secure admin dashboard with real-time analytics (Chart.js).',
+  image: '/public/boc.png',
+  category: ['Full-Stack'],
+  technologies: ['React', 'Supabase', 'Chart.js'],
+  github: '#' 
+}
+
   ];
 
   const [filter, setFilter] = useState('All');
