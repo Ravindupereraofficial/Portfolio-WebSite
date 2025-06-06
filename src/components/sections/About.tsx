@@ -59,7 +59,7 @@ const About: React.FC = () => {
             <div className="relative z-10">
               <div className="card-neumorphic overflow-hidden rounded-2xl">
                 <img 
-                  src="" 
+                  src="https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg"
                   alt="Ravindu Perera working" 
                   className="w-full h-auto rounded-2xl transform hover:scale-105 transition-transform duration-500"
                 />

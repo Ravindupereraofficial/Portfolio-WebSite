@@ -22,26 +22,25 @@ const Experience: React.FC = () => {
     {
       title: "Fullstack Developer",
       company: "EvoPlan",
-      period: "2023 - Present",
+      period: "2024 - Present",
       description: [
         "Led a team of 45+ developers in designing and implementing a comprehensive planning system",
         "Built the user module with authentication and authorization features",
-        "Optimized API performance, reducing response times by 40%",
-        "Implemented CI/CD pipelines for streamlined deployments"
+        "Optimized API performance, reducing response times by 40%"
       ],
-      technologies: ["Java", "Spring Boot", "React", "MySQL", "AWS"]
+      technologies: ["Java", "Spring Boot", "React", "MySQL"]
     },
     {
       title: "Full-Stack Developer",
       company: "BOC Bank System",
-      period: "2021 - 2023",
+      period: "2025 - Present",
       description: [
         "Developed QR-based ATM guides for improved customer experience",
         "Created an interactive feedback dashboard to track customer satisfaction",
         "Implemented secure transaction processing with multi-factor authentication",
         "Collaborated with UI/UX team to enhance user interfaces"
       ],
-      technologies: ["Angular", "Node.js", "Express", "MongoDB", "Docker"]
+      technologies: ["React", "Supabase"]
     }
   ];
 

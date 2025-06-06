@@ -246,10 +246,23 @@ const Contact: React.FC = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="h-64 rounded-xl bg-gradient-to-r from-primary-500 to-secondary-500"
-              aria-label="Map placeholder"
-            />
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="rounded-xl overflow-hidden h-64 card-glass"
+            >
+              <div className="relative w-full h-full">
+                <img 
+                  src="https://www.google.com/maps/vt/data=zqstPwOi61qi-v8RyW_MRPyvkqdbm0m_J4TJkc4oMzEXjFtYtoSeAEa_ToeX2t8ijXqFZdpBoID_csLkuD12r9dhS0e8v2kY5mLwjCUuF33RPOsOilXF1Cr8XHIdhEmefwFYEcyuOF-H25updauejn8UXYTDG3XiMvOhmJnZ18B3f4bMBBoMCeRjaQ1u9xCRc3xe6caNTkJ6ns3bHnSmGHUVuHhs-nIGHr7wj-cfZntH7ACLI_IBQVrxzCFQYtgx_BfxnwcfFaEWKDw2HXlervvVngqoX90sZplcPA" 
+                  alt="Map" 
+                  className="w-full h-full object-cover opacity-70"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-800/70 to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <h4 className="text-xl font-semibold mb-1">Based in</h4>
+                    <p>Malabe, Sri Lanka</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

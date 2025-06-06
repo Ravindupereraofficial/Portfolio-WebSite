@@ -22,13 +22,13 @@ const Certifications: React.FC = () => {
     {
       title: "Postman API Fundamentals",
       issuer: "Postman",
-      date: "2023",
+      date: "2024",
       icon: <Award size={24} className="text-primary-500" />
     },
     {
       title: "Generative AI Fundamentals",
       issuer: "Pieces",
-      date: "2023",
+      date: "2024",
       icon: <Award size={24} className="text-secondary-500" />
     }
   ];

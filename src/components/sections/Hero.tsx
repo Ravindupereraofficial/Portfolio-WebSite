@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import { ArrowDown, FileDown, Eye } from 'lucide-react';
 import { useCursor } from '../../context/CursorContext';
-import mainImage from '../../../assets/main.jpg';
+
 
 
 const Hero: React.FC = () => {
