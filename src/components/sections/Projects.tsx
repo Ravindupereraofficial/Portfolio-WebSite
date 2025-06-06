@@ -23,6 +23,33 @@ const Projects: React.FC = () => {
   });
 
   const projects: Project[] = [
+        {
+      id: 4,
+      title: 'Employee Management System',
+      description: 'Enterprise solution for managing customer data, interactions, and support tickets.',
+      image: '/public/employee.png',
+      category: ['Backend'],
+      technologies: ['Angular', 'Spring Boot', 'MySQL'],
+      github: '#'
+    },
+    {
+      id: 5,
+      title: 'LibraEase',
+      description: 'Modern library management system with book tracking, user accounts, and reservation features.',
+      image: '/public/library.png',
+      category: ['Frontend', 'Backend'],
+      technologies: ['Java', 'JavaFX', 'MySQL'],
+      github: 'https://github.com/Ravindupereraofficial/LibraEase-Library-Management-System'
+    },
+    {
+  id: 6,
+  title: 'BOC Bank Digital Assistance & Feedback System',
+  description: 'QR-based ATM/CRM guidance system, a feedback app and a secure admin dashboard with real-time analytics.',
+  image: '/public/boc.png',
+  category: ['Full-Stack'],
+  technologies: ['React', 'Supabase', 'Chart.js'],
+  github: '#' 
+},
     {
       id: 1,
       title: 'Mos Burger',
@@ -53,33 +80,7 @@ const Projects: React.FC = () => {
       github: 'https://github.com/Ravindupereraofficial/Askify-Online_English_Learning_Platform',
       live: 'https://ravindupereraofficial.github.io/Askify-Online_English_Learning_Platform/'
     },
-    {
-      id: 4,
-      title: 'Customer Management System',
-      description: 'Enterprise solution for managing customer data, interactions, and support tickets.',
-      image: 'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg',
-      category: ['Backend'],
-      technologies: ['Java', 'Spring Boot', 'MySQL', 'Thymeleaf'],
-      github: '#'
-    },
-    {
-      id: 5,
-      title: 'LibraEase',
-      description: 'Modern library management system with book tracking, user accounts, and reservation features.',
-      image: '/public/library.png',
-      category: ['Frontend', 'Backend'],
-      technologies: ['Java', 'JavaFX', 'MySQL'],
-      github: 'https://github.com/Ravindupereraofficial/LibraEase-Library-Management-System'
-    },
-    {
-  id: 6,
-  title: 'BOC Bank Digital Assistance & Feedback System',
-  description: 'Developed in March 2025, this system includes three responsive web applications now in use at the BOC Bank Monaragala Branch. Features include a QR-based ATM/CRM guidance system, a feedback app using Supabase, and a secure admin dashboard with real-time analytics (Chart.js).',
-  image: '/public/boc.png',
-  category: ['Full-Stack'],
-  technologies: ['React', 'Supabase', 'Chart.js'],
-  github: '#' 
-}
+
 
   ];
 
