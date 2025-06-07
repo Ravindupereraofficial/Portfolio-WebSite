@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
               className="flex flex-wrap gap-4"
             >
               <a 
-                href="https://res.cloudinary.com/dtol8lk5b/image/upload/v1749293782/WhatsApp_Image_2024-12-01_at_12.07.26_0903b7c7_juvvun.jpg" 
+                href="https://drive.google.com/file/d/1rN0tvUV7clcj0X7aTd_GMunonxdFfNv1/view?usp=sharing" 
                 className="btn-primary flex items-center gap-2"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
@@ -128,7 +128,7 @@ const Hero: React.FC = () => {
               <div className="card-neumorphic p-3 rounded-full">
                 <div className="overflow-hidden rounded-full w-64 h-64 sm:w-80 sm:h-80 ring-4 ring-primary-500/20">
                   <img 
-                    src="/public/main.jpg" 
+                    src="https://res.cloudinary.com/dtol8lk5b/image/upload/v1749293782/WhatsApp_Image_2024-12-01_at_12.07.26_0903b7c7_juvvun.jpg" 
                     alt="" 
                     className="w-full h-full object-cover"
                   />
