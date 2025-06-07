@@ -54,7 +54,7 @@ const Projects: React.FC = () => {
       id: 1,
       title: 'Mos Burger',
       description: 'A restaurant management system with online ordering capabilities, reservation management, and admin dashboard.',
-      image: '/public/mos.png',
+      image: 'https://res.cloudinary.com/dtol8lk5b/image/upload/v1749293079/Neon_Retro_Stars_Marketing_Mockup_Website_Instagram_Post_bsphtv.png',
       category: ['Frontend', 'Backend'],
       technologies: ['Springboot', 'js','Mysql'],
       github: '#',
