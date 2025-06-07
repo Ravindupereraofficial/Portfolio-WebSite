@@ -37,7 +37,6 @@ const Experience: React.FC = () => {
       description: [
         "Developed QR-based ATM guides for improved customer experience",
         "Created an interactive feedback dashboard to track customer satisfaction",
-        "Implemented secure transaction processing with multi-factor authentication",
         "Collaborated with UI/UX team to enhance user interfaces"
       ],
       technologies: ["React", "Supabase"]
