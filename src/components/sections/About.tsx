@@ -103,6 +103,130 @@ const About: React.FC = () => {
                   className="w-full h-auto rounded-2xl transform hover:scale-105 transition-transform duration-500"
                 />
               </div>
+              
+              {/* Coding-themed floating elements */}
+              
+              {/* Binary Code Stream - Top Left */}
+              <motion.div
+                className="absolute -top-4 -left-4 md:-top-8 md:-left-12 z-20 hidden sm:block"
+                animate={{ 
+                  y: [0, -15, 0],
+                  opacity: [0.6, 1, 0.6]
+                }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 3,
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-mono px-2 py-1 md:px-3 md:py-2 rounded-lg shadow-lg">
+                  <div>101010</div>
+                  <div>110011</div>
+                  <div className="hidden md:block">001100</div>
+                </div>
+              </motion.div>
+
+              {/* Code Function - Top Right */}
+              <motion.div
+                className="absolute -top-4 -right-2 md:-top-12 md:-right-8 z-20 hidden sm:block"
+                animate={{ 
+                  rotate: [0, 5, -5, 0],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 4,
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-mono px-2 py-1 md:px-3 md:py-2 rounded-lg shadow-lg max-w-[100px] md:max-w-[120px]">
+                  <div>function() {'{}'}</div>
+                  <div className="text-green-300 hidden md:block">// code</div>
+                </div>
+              </motion.div>
+
+              {/* Terminal Window - Left Side */}
+              <motion.div
+                className="absolute top-1/4 -left-6 md:top-1/3 md:-left-16 transform -translate-y-1/2 z-20 hidden md:block"
+                animate={{ 
+                  x: [0, -8, 0],
+                  y: [0, -5, 0]
+                }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 5,
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="bg-gray-900 text-green-400 text-xs font-mono p-2 md:p-3 rounded-lg shadow-lg border border-gray-700 min-w-[80px] md:min-w-[100px]">
+                  <div className="flex items-center mb-1">
+                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-red-500 rounded-full mr-1"></div>
+                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-yellow-500 rounded-full mr-1"></div>
+                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full"></div>
+                  </div>
+                  <div>$ npm dev</div>
+                  <div className="text-green-300">✓ Ready</div>
+                </div>
+              </motion.div>
+
+              {/* Git Commit - Right Side */}
+              <motion.div
+                className="absolute top-1/4 -right-4 md:top-1/3 md:-right-12 z-20 hidden md:block"
+                animate={{ 
+                  x: [0, 8, 0],
+                  rotate: [0, -5, 0]
+                }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 4.5,
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-mono px-2 py-1 md:px-3 md:py-2 rounded-lg shadow-lg">
+                  <div>git commit</div>
+                  <div className="text-yellow-200">"update"</div>
+                </div>
+              </motion.div>
+
+              {/* Console Log - Bottom Left */}
+              <motion.div
+                className="absolute -bottom-4 -left-4 md:-bottom-8 md:-left-10 z-20 hidden sm:block"
+                animate={{ 
+                  y: [0, 8, 0],
+                  opacity: [0.7, 1, 0.7]
+                }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 3.5,
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-mono px-2 py-1 md:px-3 md:py-2 rounded-lg shadow-lg">
+                  <div>console.log(</div>
+                  <div className="text-yellow-300">'Hello!'</div>
+                  <div>);</div>
+                </div>
+              </motion.div>
+
+              {/* JSON Object - Bottom Right */}
+              <motion.div
+                className="absolute -bottom-4 -right-2 md:-bottom-12 md:-right-6 z-20 hidden sm:block"
+                animate={{ 
+                  scale: [1, 1.05, 1],
+                  rotate: [0, 2, -2, 0]
+                }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 4,
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-xs font-mono px-2 py-1 md:px-3 md:py-2 rounded-lg shadow-lg">
+                  <div>{'{'}</div>
+                  <div>"dev": true</div>
+                  <div>{'}'}</div>
+                </div>
+              </motion.div>
             </div>
             {/* Floating Tech Stack */}
             <div className="absolute top-5 -right-5 md:top-10 md:-right-10 z-20 animate-float">
@@ -146,7 +270,7 @@ const About: React.FC = () => {
               custom={0}
               className="text-2xl md:text-3xl font-semibold mb-4"
             >
-              Full-Stack Developer Student <span className="text-primary-500">@</span> iCET | OUSL Undergraduate
+              Code Craftsman & Problem Solver <span className="text-primary-500">@</span> iCET | OUSL
             </motion.div>
             
             <motion.p
@@ -154,7 +278,7 @@ const About: React.FC = () => {
               custom={1}
               className="text-dark-600 dark:text-light-300 mb-6"
             >
-              I'm a passionate Full-Stack Developer from Sri Lanka with a strong focus on creating efficient, scalable, and user-friendly solutions. I'm currently advancing my skills at iCET while pursuing my undergraduate degree at OUSL.
+              I transform ideas into elegant code. As a passionate Full-Stack Developer, I specialize in building scalable applications using modern technologies. From crafting responsive frontends to architecting robust backends, I love every aspect of the development lifecycle.
             </motion.p>
             
             <motion.p
@@ -162,7 +286,7 @@ const About: React.FC = () => {
               custom={2}
               className="text-dark-600 dark:text-light-300 mb-6"
             >
-              With expertise in both frontend and backend technologies, I specialize in building modern web applications using React, Angular, Java, and Spring Boot. I'm particularly enthusiastic about Java development and constantly exploring new technologies to enhance my skill set.
+              My expertise spans across React, Angular, Java, Spring Boot, and database technologies. I'm particularly passionate about clean code principles, performance optimization, and creating seamless user experiences. Every line of code I write is driven by a commitment to quality and innovation.
             </motion.p>
             
             <motion.p
@@ -170,7 +294,7 @@ const About: React.FC = () => {
               custom={3}
               className="text-dark-600 dark:text-light-300 mb-8"
             >
-              When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing my knowledge with the developer community.
+              When I'm not debugging or pushing commits, you'll find me exploring new frameworks, contributing to open-source projects, or mentoring fellow developers. I believe in continuous learning and staying updated with the latest tech trends.
             </motion.p>
             
             <motion.div
