@@ -76,7 +76,7 @@ const Certifications: React.FC = () => {
   ];
 
   return (
-    <section className="section-padding bg-gradient-to-br from-light-100 via-light-200 to-light-300 dark:from-dark-800 dark:via-dark-700 dark:to-dark-600 relative overflow-hidden">
+        <section id="certifications" className="section-padding bg-light-200 dark:bg-dark-700">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-primary-500 rounded-full blur-3xl"></div>

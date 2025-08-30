@@ -42,7 +42,7 @@ const About: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-20"
+          className="text-center mb-20 animate-on-scroll fade-in-up"
         >
           <h2 className="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight text-gradient">About Me</h2>
           <div className="h-1 w-24 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full shadow-lg"></div>
@@ -54,7 +54,7 @@ const About: React.FC = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="relative animate-on-scroll fade-in-left"
           >
             <div className="relative z-10">
               <div className="card-neumorphic overflow-hidden rounded-2xl">
@@ -99,6 +99,7 @@ const About: React.FC = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             transition={{ staggerChildren: 0.2 }}
+            className="animate-on-scroll fade-in-right"
           >
 
             <motion.div

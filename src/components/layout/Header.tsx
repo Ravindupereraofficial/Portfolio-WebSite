@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Moon, Sun, Menu, X, Code } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
+import { smoothScrollTo } from '../../utils/scrollUtils';
 
 const Header: React.FC = () => {
   const { darkMode, toggleDarkMode } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+
+  // Handle smooth scroll to section with enhanced easing
+  const scrollToSection = (sectionId: string) => {
+    smoothScrollTo(sectionId, 80, 800);
+  };
 
   // Navigation links
   const navLinks = [
@@ -58,13 +63,13 @@ const Header: React.FC = () => {
     >
       <div className="container-custom flex justify-between items-center">
         {/* Logo */}
-        <Link 
-          to="/" 
-          className="flex items-center space-x-2" 
+        <button 
           onClick={(e) => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            scrollToSection('home');
+            setActiveSection('home');
           }}
+          className="flex items-center space-x-2" 
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -82,18 +87,22 @@ const Header: React.FC = () => {
           >
             RP
           </motion.span>
-        </Link>
+        </button>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.id}
-              href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(link.id);
+                setActiveSection(link.id);
+              }}
               className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
             >
               {link.name}
-            </a>
+            </button>
           ))}
           <button
             onClick={toggleDarkMode}
@@ -148,14 +157,18 @@ const Header: React.FC = () => {
           transition={{ duration: 0.3 }}
         >
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.id}
-              href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(link.id);
+                setActiveSection(link.id);
+                setMobileMenuOpen(false);
+              }}
               className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
-              onClick={() => setMobileMenuOpen(false)}
             >
               {link.name}
-            </a>
+            </button>
           ))}
         </motion.nav>
       </div>
