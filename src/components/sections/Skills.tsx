@@ -21,7 +21,7 @@ const Skills: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [showAllSkills, setShowAllSkills] = useState<boolean>(false);
-  const [visibleCount, setVisibleCount] = useState<number>(8);
+  const visibleCount = 8;
 
   // Enhanced skills data with professional descriptions and color coding
   const skills: Skill[] = [
@@ -371,14 +371,14 @@ const Skills: React.FC = () => {
         {/* Skills Grid */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={selectedCategory}
+            key={selectedCategory + (showAllSkills ? '-all' : '-limited')}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
-            {filteredSkills.map((skill, index) => (
+            {skillsToDisplay.map((skill, index) => (
               <motion.div
                 key={skill.name}
                 variants={skillCardVariants}
@@ -437,6 +437,30 @@ const Skills: React.FC = () => {
           </motion.div>
         </AnimatePresence>
 
+        {/* Show More/Less Arrow Button */}
+        {hasMoreSkills && (
+          <div className="flex justify-center mt-8">
+            <motion.button
+              onClick={() => setShowAllSkills((prev) => !prev)}
+              className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold shadow-lg hover:scale-105 transition-transform duration-300 focus:outline-none"
+              whileTap={{ scale: 0.95 }}
+              aria-label={showAllSkills ? 'Show Less' : 'Show More'}
+            >
+              {showAllSkills ? (
+                <>
+                  Show Less
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 15l-7-7-7 7" /></svg>
+                </>
+              ) : (
+                <>
+                  Show More
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 9l7 7 7-7" /></svg>
+                </>
+              )}
+            </motion.button>
+          </div>
+        )}
+
         {/* Skills Summary */}
         <motion.div 
           className="mt-16 text-center"
@@ -446,10 +470,10 @@ const Skills: React.FC = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[
-              { label: 'Years of Experience', value: '3+' },
-              { label: 'Technologies Mastered', value: skills.length.toString() },
-              { label: 'Projects Completed', value: '25+' },
-              { label: 'Average Skill Level', value: `${Math.round(skills.reduce((acc, skill) => acc + skill.level, 0) / skills.length)}%` }
+              { label: 'Years of Experience', value: 3, suffix: '+' },
+              { label: 'Technologies Mastered', value: 18 },
+              { label: 'Projects Completed', value: 25, suffix: '+' },
+              { label: 'Average Skill Level', value: 87, suffix: '%' }
             ].map((stat, index) => (
               <motion.div 
                 key={stat.label}
@@ -458,7 +482,9 @@ const Skills: React.FC = () => {
                 animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
               >
-                <div className="text-2xl md:text-3xl font-bold text-gradient mb-2">{stat.value}</div>
+                <div className="text-2xl md:text-3xl font-bold text-gradient mb-2">
+                  <AnimatedCounter value={stat.value} inView={inView} />{stat.suffix || ''}
+                </div>
                 <div className="text-sm text-dark-600 dark:text-light-400">{stat.label}</div>
               </motion.div>
             ))}
