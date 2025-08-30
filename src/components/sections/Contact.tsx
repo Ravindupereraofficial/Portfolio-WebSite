@@ -30,13 +30,28 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setFormStatus('submitting');
 
+    // Initialize EmailJS with your public key
+    emailjs.init('5b4cr48IOSiyNb7-A');
+
+    // Template parameters that match your EmailJS template
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      to_name: 'Ravindu Perera', // Your name
+    };
+
+    console.log('Sending email with params:', templateParams);
+
     emailjs.send(
       'service_ihbrplh',       // Your service ID
       'template_1uoeqlw',      // Your template ID
-      formData,                // The form data to send
+      templateParams,          // The properly formatted template parameters
       '5b4cr48IOSiyNb7-A'      // Your user ID (public key)
     )
-    .then(() => {
+    .then((response) => {
+      console.log('Email sent successfully:', response);
       setFormStatus('success');
       if (formRef.current) formRef.current.reset();
       setFormData({ name: '', email: '', subject: '', message: '' });
@@ -44,7 +59,8 @@ const Contact: React.FC = () => {
         setFormStatus('idle');
       }, 5000);
     })
-    .catch(() => {
+    .catch((error) => {
+      console.error('Email sending failed:', error);
       setFormStatus('error');
       setTimeout(() => {
         setFormStatus('idle');

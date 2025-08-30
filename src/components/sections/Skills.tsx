@@ -7,7 +7,7 @@ type Skill = {
   name: string;
   level: number;
   category: string;
-  icon: string;
+  icon: React.ReactNode;
   color: string;
   description: string;
 };
@@ -30,7 +30,7 @@ const Skills: React.FC = () => {
       name: 'React.js', 
       level: 90, 
       category: 'Frontend', 
-      icon: '⚛️', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-8 h-8" />, 
       color: 'from-blue-500 to-cyan-500',
       description: 'Advanced component architecture & state management'
     },
@@ -38,7 +38,7 @@ const Skills: React.FC = () => {
       name: 'Angular', 
       level: 85, 
       category: 'Frontend', 
-      icon: '🅰️', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" className="w-8 h-8" />, 
       color: 'from-red-500 to-pink-500',
       description: 'Enterprise-scale applications with TypeScript'
     },
@@ -46,7 +46,7 @@ const Skills: React.FC = () => {
       name: 'HTML5', 
       level: 95, 
       category: 'Frontend', 
-      icon: '🌐', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" className="w-8 h-8" />, 
       color: 'from-orange-500 to-red-500',
       description: 'Semantic markup & modern web standards'
     },
@@ -54,7 +54,7 @@ const Skills: React.FC = () => {
       name: 'CSS3', 
       level: 90, 
       category: 'Frontend', 
-      icon: '🎨', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" className="w-8 h-8" />, 
       color: 'from-blue-400 to-blue-600',
       description: 'Advanced animations & responsive design'
     },
@@ -62,7 +62,7 @@ const Skills: React.FC = () => {
       name: 'JavaScript', 
       level: 92, 
       category: 'Frontend', 
-      icon: '📜', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="w-8 h-8" />, 
       color: 'from-yellow-400 to-orange-500',
       description: 'ES6+ features & asynchronous programming'
     },
@@ -70,7 +70,7 @@ const Skills: React.FC = () => {
       name: 'Tailwind CSS', 
       level: 88, 
       category: 'Frontend', 
-      icon: '💨', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" className="w-8 h-8" />, 
       color: 'from-teal-400 to-blue-500',
       description: 'Utility-first styling & custom design systems'
     },
@@ -80,7 +80,7 @@ const Skills: React.FC = () => {
       name: 'Java', 
       level: 95, 
       category: 'Backend', 
-      icon: '☕', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" className="w-8 h-8" />, 
       color: 'from-orange-600 to-red-600',
       description: 'Enterprise applications & microservices'
     },
@@ -88,7 +88,7 @@ const Skills: React.FC = () => {
       name: 'Spring Boot', 
       level: 90, 
       category: 'Backend', 
-      icon: '🍃', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" className="w-8 h-8" />, 
       color: 'from-green-500 to-emerald-500',
       description: 'RESTful APIs & dependency injection'
     },
@@ -96,7 +96,7 @@ const Skills: React.FC = () => {
       name: 'Node.js', 
       level: 82, 
       category: 'Backend', 
-      icon: '🟢', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-8 h-8" />, 
       color: 'from-green-400 to-green-600',
       description: 'Server-side JavaScript & event-driven architecture'
     },
@@ -104,7 +104,7 @@ const Skills: React.FC = () => {
       name: 'Express.js', 
       level: 78, 
       category: 'Backend', 
-      icon: '🚂', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" className="w-8 h-8" />, 
       color: 'from-gray-600 to-gray-800',
       description: 'Lightweight web framework & middleware'
     },
@@ -114,7 +114,7 @@ const Skills: React.FC = () => {
       name: 'MySQL', 
       level: 85, 
       category: 'Database', 
-      icon: '🐬', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" className="w-8 h-8" />, 
       color: 'from-blue-500 to-blue-700',
       description: 'Relational database design & optimization'
     },
@@ -122,7 +122,7 @@ const Skills: React.FC = () => {
       name: 'MongoDB', 
       level: 80, 
       category: 'Database', 
-      icon: '🍃', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="w-8 h-8" />, 
       color: 'from-green-600 to-green-800',
       description: 'NoSQL document storage & aggregation'
     },
@@ -132,7 +132,7 @@ const Skills: React.FC = () => {
       name: 'Git', 
       level: 87, 
       category: 'DevOps', 
-      icon: '🔄', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" className="w-8 h-8" />, 
       color: 'from-orange-500 to-red-500',
       description: 'Version control & collaborative development'
     },
@@ -140,7 +140,7 @@ const Skills: React.FC = () => {
       name: 'AWS', 
       level: 75, 
       category: 'DevOps', 
-      icon: '☁️', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS" className="w-8 h-8" />, 
       color: 'from-yellow-500 to-orange-500',
       description: 'Cloud infrastructure & deployment strategies'
     },
@@ -148,7 +148,7 @@ const Skills: React.FC = () => {
       name: 'Docker', 
       level: 72, 
       category: 'DevOps', 
-      icon: '🐳', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" className="w-8 h-8" />, 
       color: 'from-blue-400 to-blue-600',
       description: 'Containerization & microservices deployment'
     },
@@ -158,7 +158,7 @@ const Skills: React.FC = () => {
       name: 'Postman', 
       level: 90, 
       category: 'Tools', 
-      icon: '📬', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman" className="w-8 h-8" />, 
       color: 'from-orange-400 to-orange-600',
       description: 'API testing & documentation'
     },
@@ -166,7 +166,7 @@ const Skills: React.FC = () => {
       name: 'IntelliJ IDEA', 
       level: 95, 
       category: 'Tools', 
-      icon: '🧠', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" alt="IntelliJ IDEA" className="w-8 h-8" />, 
       color: 'from-purple-500 to-purple-700',
       description: 'Advanced IDE & debugging workflows'
     },
@@ -174,7 +174,7 @@ const Skills: React.FC = () => {
       name: 'VS Code', 
       level: 92, 
       category: 'Tools', 
-      icon: '💻', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" className="w-8 h-8" />, 
       color: 'from-blue-500 to-blue-700',
       description: 'Code editing & extension ecosystem'
     }
@@ -470,9 +470,9 @@ const Skills: React.FC = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[
-              { label: 'Years of Experience', value: 3, suffix: '+' },
-              { label: 'Technologies Mastered', value: 18 },
-              { label: 'Projects Completed', value: 25, suffix: '+' },
+              { label: 'Years of Experience', value: 1, suffix: '+' },
+              { label: 'Technologies Mastered', value: 8 },
+              { label: 'Projects Completed', value: 15, suffix: '+' },
               { label: 'Average Skill Level', value: 87, suffix: '%' }
             ].map((stat, index) => (
               <motion.div 

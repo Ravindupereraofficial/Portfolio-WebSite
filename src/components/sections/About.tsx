@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code2, Cpu, Database, Coffee } from 'lucide-react';
 import { useCursor } from '../../context/CursorContext';
 
 const About: React.FC = () => {
@@ -12,10 +11,50 @@ const About: React.FC = () => {
   });
 
   const techStack = [
-    { name: 'Frontend', icon: <Code2 className="text-primary-500" size={24} />, color: 'from-blue-500 to-indigo-500' },
-    { name: 'Backend', icon: <Cpu className="text-secondary-500" size={24} />, color: 'from-green-500 to-emerald-500' },
-    { name: 'Database', icon: <Database className="text-accent-500" size={24} />, color: 'from-yellow-500 to-orange-500' },
-    { name: 'Misc', icon: <Coffee className="text-error-500" size={24} />, color: 'from-red-500 to-pink-500' }
+    { 
+      name: 'React', 
+      icon: (
+        <img 
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" 
+          alt="React" 
+          className="w-6 h-6" 
+        />
+      ), 
+      color: 'from-blue-400 to-blue-600' 
+    },
+    { 
+      name: 'Java', 
+      icon: (
+        <img 
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" 
+          alt="Java" 
+          className="w-6 h-6" 
+        />
+      ), 
+      color: 'from-orange-500 to-red-500' 
+    },
+    { 
+      name: 'Spring', 
+      icon: (
+        <img 
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" 
+          alt="Spring Boot" 
+          className="w-6 h-6" 
+        />
+      ), 
+      color: 'from-green-500 to-emerald-600' 
+    },
+    { 
+      name: 'MySQL', 
+      icon: (
+        <img 
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" 
+          alt="MySQL" 
+          className="w-6 h-6" 
+        />
+      ), 
+      color: 'from-blue-500 to-indigo-600' 
+    }
   ];
 
   const fadeInUpVariant = {
