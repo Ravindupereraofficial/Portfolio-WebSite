@@ -5,6 +5,7 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -13,6 +14,11 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-semibold;
+  }
+
+  /* Enhanced smooth scrolling */
+  * {
+    scroll-behavior: smooth;
   }
 }
 
@@ -93,14 +99,111 @@
   transition: transform 0.2s ease;
 }
 
-/* Scroll animations */
+/* Scroll animations with enhanced fade effects */
 .scroll-hidden {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Section transition effects - ensure content is visible by default */
+.section-fade {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Only apply animation classes when JavaScript is available */
+.js .section-fade {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.js .section-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced smooth scroll behavior with better performance */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom smooth scroll for browsers that support it */
+  @supports (scroll-behavior: smooth) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/* Add momentum scrolling for iOS Safari */
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Page transition effects */
+.page-transition {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-transition.loaded {
   opacity: 1;
   transform: translateY(0);
 }
