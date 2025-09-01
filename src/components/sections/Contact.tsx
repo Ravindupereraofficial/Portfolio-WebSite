@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Send, MapPin, Phone, Mail, CheckCircle } from 'lucide-react';
 import { useCursor } from '../../context/CursorContext';
-import emailjs from 'emailjs-com'; // Make sure to install this package
+import emailjs from '@emailjs/browser'; // Using the newer package
 
 const Contact: React.FC = () => {
   const { setIsHovering } = useCursor();
@@ -11,6 +11,23 @@ const Contact: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1
   });
+
+  // Initialize EmailJS
+  useEffect(() => {
+    try {
+      emailjs.init('5b4cr48IOSiyNb7-A');
+      console.log('EmailJS initialized successfully');
+      
+      // Test EmailJS configuration on component mount
+      console.log('EmailJS Configuration Test:');
+      console.log('Service ID: service_ihbrplh');
+      console.log('Template ID: template_1uoeqlw');
+      console.log('Public Key: 5b4cr48IOSiyNb7-A');
+      
+    } catch (error) {
+      console.error('EmailJS initialization failed:', error);
+    }
+  }, []);
 
   const formRef = useRef<HTMLFormElement>(null);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -23,49 +40,103 @@ const Contact: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    // Map form field names to state keys
+    const fieldMap: { [key: string]: keyof typeof formData } = {
+      from_name: 'name',
+      from_email: 'email',
+      subject: 'subject',
+      message: 'message'
+    };
+    
+    const stateKey = fieldMap[name] || name as keyof typeof formData;
+    setFormData(prev => ({ ...prev, [stateKey]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('submitting');
 
-    // Initialize EmailJS with your public key
-    emailjs.init('5b4cr48IOSiyNb7-A');
+    // Validate form data
+    if (!formData.name || !formData.email || !formData.message) {
+      console.error('Form validation failed: Missing required fields');
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 5000);
+      return;
+    }
 
-    // Template parameters that match your EmailJS template
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      subject: formData.subject,
-      message: formData.message,
-      to_name: 'Ravindu Perera', // Your name
-    };
+    try {
+      console.log('Attempting to send email with form data:', {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message
+      });
 
-    console.log('Sending email with params:', templateParams);
+      // Try method 1: sendForm
+      if (formRef.current) {
+        try {
+          const response = await emailjs.sendForm(
+            'service_ihbrplh',       // Your service ID
+            'template_1uoeqlw',      // Your template ID
+            formRef.current,         // The form element
+            '5b4cr48IOSiyNb7-A'      // Your public key
+          );
+          
+          console.log('Email sent successfully via sendForm:', response);
+          setFormStatus('success');
+          if (formRef.current) formRef.current.reset();
+          setFormData({ name: '', email: '', subject: '', message: '' });
+          setTimeout(() => setFormStatus('idle'), 5000);
+          return;
+        } catch (formError) {
+          console.warn('sendForm failed, trying send method:', formError);
+        }
+      }
 
-    emailjs.send(
-      'service_ihbrplh',       // Your service ID
-      'template_1uoeqlw',      // Your template ID
-      templateParams,          // The properly formatted template parameters
-      '5b4cr48IOSiyNb7-A'      // Your user ID (public key)
-    )
-    .then((response) => {
-      console.log('Email sent successfully:', response);
+      // Try method 2: send with template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject || 'Portfolio Contact Form',
+        message: formData.message,
+        to_name: 'Ravindu Perera',
+        reply_to: formData.email
+      };
+
+      const response = await emailjs.send(
+        'service_ihbrplh',
+        'template_1uoeqlw',
+        templateParams,
+        '5b4cr48IOSiyNb7-A'
+      );
+
+      console.log('Email sent successfully via send:', response);
       setFormStatus('success');
       if (formRef.current) formRef.current.reset();
       setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => {
-        setFormStatus('idle');
-      }, 5000);
-    })
-    .catch((error) => {
-      console.error('Email sending failed:', error);
+      setTimeout(() => setFormStatus('idle'), 5000);
+
+    } catch (error: any) {
+      console.error('All email sending methods failed:', error);
+      console.error('Error details:', {
+        status: error.status,
+        text: error.text,
+        message: error.message,
+        name: error.name
+      });
+
+      // Check specific error types
+      if (error.status === 412) {
+        console.error('412 Error - Possible causes:');
+        console.error('1. Service ID is incorrect or inactive');
+        console.error('2. Template ID doesn\'t exist or is not published');
+        console.error('3. Public key is incorrect');
+        console.error('4. Template variables don\'t match');
+      }
+
       setFormStatus('error');
-      setTimeout(() => {
-        setFormStatus('idle');
-      }, 5000);
-    });
+      setTimeout(() => setFormStatus('idle'), 5000);
+    }
   };
 
   const contactInfo = [
@@ -92,7 +163,7 @@ const Contact: React.FC = () => {
       <div className="absolute top-40 left-0 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-20 right-0 w-80 h-80 bg-secondary-500/10 rounded-full blur-3xl -z-10"></div>
 
-      <div className="container-custom" ref={ref}>
+      <div className="container-custom relative" ref={ref}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -140,7 +211,7 @@ const Contact: React.FC = () => {
                       <input 
                         type="text"
                         id="name"
-                        name="name"
+                        name="from_name"
                         required
                         placeholder="John Doe"
                         className="form-input"
@@ -155,7 +226,7 @@ const Contact: React.FC = () => {
                       <input 
                         type="email"
                         id="email"
-                        name="email"
+                        name="from_email"
                         required
                         placeholder="john@example.com"
                         className="form-input"
