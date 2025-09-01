@@ -402,7 +402,10 @@ const Experience: React.FC = () => {
           <p className="text-dark-600 dark:text-light-300 mb-6">
             Ready to bring innovative solutions to your next project
           </p>
-          <motion.button
+          <motion.a
+            href="https://drive.google.com/file/d/1rN0tvUV7clcj0X7aTd_GMunonxdFfNv1/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
@@ -411,7 +414,7 @@ const Experience: React.FC = () => {
           >
             Download Resume
             <ExternalLink className="w-5 h-5 ml-2" />
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </section>
