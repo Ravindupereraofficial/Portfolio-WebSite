@@ -23,6 +23,15 @@ const Projects: React.FC = () => {
   });
 
   const projects: Project[] = [
+    {
+      id: 7,
+      title: 'VeTest Vehicle Inspection (Singapore)',
+      description: 'Centralized vehicle inspection management system connecting governmental licensing databases with inspection facilities. Manages end-to-end vehicle inspection processes including vehicle profiling, inspection lane assignment, automated and visual testing, and certificate issuance in compliance with road safety regulations.',
+      image: 'https://res.cloudinary.com/dtol8lk5b/image/upload/v1774722181/Neon_Retro_Stars_Marketing_Mockup_Website_Instagram_Post_etqxaw.png',
+      category: ['Full-Stack'],
+      technologies: [ 'Spring Boot',],
+      github: 'https://www.navitsa.com/products/application-software/vehicle-inspection-management-system/'
+    },
         {
       id: 4,
       title: 'Employee Management System',
@@ -87,10 +96,15 @@ const Projects: React.FC = () => {
   const [filter, setFilter] = useState('All');
   const categories = ['All', 'Frontend', 'Backend'];
 
+
   // Filter projects based on selected category
   const filteredProjects = filter === 'All' 
     ? projects 
     : projects.filter(project => project.category.includes(filter));
+
+  // Show only 3 projects by default, show all if toggled
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const visibleProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, 3);
 
   return (
     <section id="projects" className="section-padding bg-light-200 dark:bg-dark-700">
@@ -127,7 +141,7 @@ const Projects: React.FC = () => {
         </motion.div>
         
         <div className="masonry-grid">
-          {filteredProjects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 40 }}
@@ -135,11 +149,13 @@ const Projects: React.FC = () => {
               transition={{ duration: 0.7, delay: index * 0.13, type: 'spring', stiffness: 60 }}
               className="mb-6 break-inside-avoid"
             >
+              {/* ...existing code for each project card... */}
               <div 
                 className="card-glass overflow-hidden group relative transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:border-primary-500/60 hover:ring-2 hover:ring-primary-400/30"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
+                {/* ...existing code for image, overlays, and details... */}
                 <div className="relative overflow-hidden h-52 sm:h-64">
                   <img 
                     src={project.image} 
@@ -264,6 +280,30 @@ const Projects: React.FC = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* See More / See Less Button */}
+        {filteredProjects.length > 3 && (
+          <div className="flex justify-center mt-8">
+            <motion.button
+              onClick={() => setShowAllProjects((prev) => !prev)}
+              className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold shadow-lg hover:scale-105 transition-transform duration-300 focus:outline-none"
+              whileTap={{ scale: 0.95 }}
+              aria-label={showAllProjects ? 'See Less' : 'See More'}
+            >
+              {showAllProjects ? (
+                <>
+                  See Less
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 15l-7-7-7 7" /></svg>
+                </>
+              ) : (
+                <>
+                  See More
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 9l7 7 7-7" /></svg>
+                </>
+              )}
+            </motion.button>
+          </div>
+        )}
       </div>
     </section>
   );
