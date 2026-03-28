@@ -12,11 +12,11 @@ type ExperienceItem = {
   location: string;
   description: string[];
   technologies: string[];
-  type: 'full-time' | 'internship' | 'project' | 'freelance';
+  type: 'full-time' | 'internship' | 'project' | 'freelance' | 'student';
   icon: React.ReactNode;
   color: string;
   achievements: string[];
-};
+}; 
 
 const Experience: React.FC = () => {
   const { setIsHovering } = useCursor();
@@ -46,6 +46,8 @@ const Experience: React.FC = () => {
         return <Users className="w-4 h-4" />;
       case 'project':
         return <Zap className="w-4 h-4" />;
+      case 'student':
+        return <Award className="w-4 h-4" />;
       default:
         return <Code className="w-4 h-4" />;
     }
@@ -59,6 +61,8 @@ const Experience: React.FC = () => {
         return 'Internship';
       case 'project':
         return 'Project';
+      case 'student':
+        return 'Student';
       default:
         return 'Other';
     }
@@ -67,8 +71,30 @@ const Experience: React.FC = () => {
   const experiences: ExperienceItem[] = [
     {
       title: "Trainee Software Engineer",
+      company: "Navitsa Technology (Pvt) Ltd",
+      period: "November 2025 – Present",
+      location: "Sri Lanka",
+      type: "full-time",
+      icon: <Briefcase className="w-5 h-5" />,
+      color: "from-teal-500 to-cyan-600",
+      description: [
+        "Developing and maintaining real-world applications using modern web technologies and frameworks in a collaborative environment.",
+        "Contributing to both frontend and backend development with a focus on code quality and best practices.",
+        "Implementing features following software development lifecycle standards with emphasis on testing and optimization.",
+        "Working with cross-functional teams to deliver scalable and maintainable solutions.",
+        "Continuously learning and applying new technologies and design patterns in practical projects."
+      ],
+      technologies: ["React","Spring Boot","Azure","Angular", "Node.js", ],
+      achievements: [
+        "Delivered multiple projects on time",
+        "Improved code quality standards",
+        "Enhanced development workflow"
+      ]
+    },
+    {
+      title: "Intern Software Engineer",
       company: "SYIGEN (Pvt) Ltd",
-      period: "July 2025 – Present",
+      period: "July 2025 – November 2025 ",
       location: "Colombo, Sri Lanka",
       type: "full-time",
       icon: <Briefcase className="w-5 h-5" />,
@@ -88,11 +114,11 @@ const Experience: React.FC = () => {
       ]
     },
     {
-      title: "Trainee Developer Student",
+      title: "Developer Student",
       company: "iCET",
-      period: "July 2025 – Present",
+      period: "July 2024 – July 2025",
       location: "Panadura, Sri Lanka",
-      type: "internship",
+      type: "student",
       icon: <Code className="w-5 h-5" />,
       color: "from-green-500 to-emerald-600",
       description: [
@@ -108,27 +134,27 @@ const Experience: React.FC = () => {
         "Achieved 95% in technical assessments"
       ]
     },
-    {
-      title: "BOC Bank Digital Assistance & Feedback System",
-      company: "BOC Bank Monaragala Branch",
-      period: "May 2025",
-      location: "Monaragala, Sri Lanka",
-      type: "project",
-      icon: <Award className="w-5 h-5" />,
-      color: "from-purple-500 to-pink-600",
-      description: [
-        "Collaborated as a team of three to design, develop, and deploy three fully responsive web applications now actively used at the BOC Bank Monaragala Branch.",
-        "Developed a QR-based guidance system to help customers use ATM/CRM machines via mobile-friendly tutorials.",
-        "Created a feedback app allowing customers to rate services by scanning section-specific QR codes; feedback is stored in Supabase.",
-        "Designed a secure admin dashboard with visual analytics (Chart.js) accessible only by bank managers (with real-time updates)."
-      ],
-      technologies: ["React", "Supabase", "Chart.js"],
-      achievements: [
-        "Deployed 3 live applications",
-        "Improved customer satisfaction by 40%",
-        "Reduced staff workload by 30%"
-      ]
-    }
+    // {
+    //   title: "BOC Bank Digital Assistance & Feedback System",
+    //   company: "BOC Bank Monaragala Branch",
+    //   period: "May 2025",
+    //   location: "Monaragala, Sri Lanka",
+    //   type: "project",
+    //   icon: <Award className="w-5 h-5" />,
+    //   color: "from-purple-500 to-pink-600",
+    //   description: [
+    //     "Collaborated as a team of three to design, develop, and deploy three fully responsive web applications now actively used at the BOC Bank Monaragala Branch.",
+    //     "Developed a QR-based guidance system to help customers use ATM/CRM machines via mobile-friendly tutorials.",
+    //     "Created a feedback app allowing customers to rate services by scanning section-specific QR codes; feedback is stored in Supabase.",
+    //     "Designed a secure admin dashboard with visual analytics (Chart.js) accessible only by bank managers (with real-time updates)."
+    //   ],
+    //   technologies: ["React", "Supabase", "Chart.js"],
+    //   achievements: [
+    //     "Deployed 3 live applications",
+    //     "Improved customer satisfaction by 40%",
+    //     "Reduced staff workload by 30%"
+    //   ]
+    // }
   ];
 
   return (
