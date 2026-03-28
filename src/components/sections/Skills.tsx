@@ -25,7 +25,7 @@ const Skills: React.FC = () => {
 
   // Enhanced skills data with professional descriptions and color coding
   const skills: Skill[] = [
-    // Frontend Development
+    // Top Priority Skills
     { 
       name: 'React.js', 
       level: 90, 
@@ -42,6 +42,56 @@ const Skills: React.FC = () => {
       color: 'from-red-500 to-pink-500',
       description: 'Enterprise-scale applications with TypeScript'
     },
+    { 
+      name: 'Java', 
+      level: 95, 
+      category: 'Backend', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" className="w-8 h-8" />, 
+      color: 'from-orange-600 to-red-600',
+      description: 'Enterprise applications & microservices'
+    },
+    { 
+      name: 'Spring Boot', 
+      level: 90, 
+      category: 'Backend', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" className="w-8 h-8" />, 
+      color: 'from-green-500 to-emerald-500',
+      description: 'RESTful APIs & dependency injection'
+    },
+    { 
+      name: 'Express.js', 
+      level: 78, 
+      category: 'Backend', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" className="w-8 h-8" />, 
+      color: 'from-gray-600 to-gray-800',
+      description: 'Lightweight web framework & middleware'
+    },
+    { 
+      name: 'Azure', 
+      level: 73, 
+      category: 'DevOps', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" className="w-8 h-8" />, 
+      color: 'from-blue-600 to-cyan-600',
+      description: 'Cloud services & enterprise solutions'
+    },
+    { 
+      name: 'AWS', 
+      level: 75, 
+      category: 'DevOps', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS" className="w-8 h-8" />, 
+      color: 'from-yellow-500 to-orange-500',
+      description: 'Cloud infrastructure & deployment strategies'
+    },
+    { 
+      name: 'Kafka', 
+      level: 72, 
+      category: 'Backend', 
+      icon: <img src="https://simpleicons.org/icons/apachekafka.svg" alt="Kafka" className="w-8 h-8" />, 
+      color: 'from-black to-gray-700',
+      description: 'Event streaming & real-time data processing'
+    },
+
+    // Frontend Development
     { 
       name: 'HTML5', 
       level: 95, 
@@ -77,22 +127,6 @@ const Skills: React.FC = () => {
 
     // Backend Development
     { 
-      name: 'Java', 
-      level: 95, 
-      category: 'Backend', 
-      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" className="w-8 h-8" />, 
-      color: 'from-orange-600 to-red-600',
-      description: 'Enterprise applications & microservices'
-    },
-    { 
-      name: 'Spring Boot', 
-      level: 90, 
-      category: 'Backend', 
-      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" className="w-8 h-8" />, 
-      color: 'from-green-500 to-emerald-500',
-      description: 'RESTful APIs & dependency injection'
-    },
-    { 
       name: 'Node.js', 
       level: 82, 
       category: 'Backend', 
@@ -101,12 +135,20 @@ const Skills: React.FC = () => {
       description: 'Server-side JavaScript & event-driven architecture'
     },
     { 
-      name: 'Express.js', 
-      level: 78, 
+      name: 'Tomcat Server', 
+      level: 76, 
       category: 'Backend', 
-      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" className="w-8 h-8" />, 
-      color: 'from-gray-600 to-gray-800',
-      description: 'Lightweight web framework & middleware'
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tomcat/tomcat-original.svg" alt="Tomcat Server" className="w-8 h-8" />, 
+      color: 'from-orange-600 to-orange-700',
+      description: 'Java application server & servlet container'
+    },
+    { 
+      name: 'RabbitMQ', 
+      level: 75, 
+      category: 'Backend', 
+      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rabbitmq/rabbitmq-original.svg" alt="RabbitMQ" className="w-8 h-8" />, 
+      color: 'from-orange-500 to-red-500',
+      description: 'Message broker & asynchronous messaging'
     },
 
     // Database Management
@@ -135,14 +177,6 @@ const Skills: React.FC = () => {
       icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" className="w-8 h-8" />, 
       color: 'from-orange-500 to-red-500',
       description: 'Version control & collaborative development'
-    },
-    { 
-      name: 'AWS', 
-      level: 75, 
-      category: 'DevOps', 
-      icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS" className="w-8 h-8" />, 
-      color: 'from-yellow-500 to-orange-500',
-      description: 'Cloud infrastructure & deployment strategies'
     },
     { 
       name: 'Docker', 

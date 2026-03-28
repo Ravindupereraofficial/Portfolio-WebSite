@@ -101,7 +101,7 @@ const Projects: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">My <span className="text-gradient">Projects</span></h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Project Experience <span className="text-gradient">Overview</span></h2>
           <div className="h-1 w-20 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full mb-8"></div>
           
           {/* Category filters */}

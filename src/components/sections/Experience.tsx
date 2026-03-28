@@ -73,7 +73,7 @@ const Experience: React.FC = () => {
       title: "Trainee Software Engineer",
       company: "Navitsa Technology (Pvt) Ltd",
       period: "November 2025 – Present",
-      location: "Sri Lanka",
+      location: "Maharagama - Sri Lanka",
       type: "full-time",
       icon: <Briefcase className="w-5 h-5" />,
       color: "from-teal-500 to-cyan-600",
