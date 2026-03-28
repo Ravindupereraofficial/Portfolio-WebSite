@@ -24,13 +24,31 @@ const Projects: React.FC = () => {
 
   const projects: Project[] = [
     {
-      id: 7,
+      id: 1,
       title: 'VeTest Vehicle Inspection (Singapore)',
       description: 'Centralized vehicle inspection management system connecting governmental licensing databases with inspection facilities. Manages end-to-end vehicle inspection processes including vehicle profiling, inspection lane assignment, automated and visual testing, and certificate issuance in compliance with road safety regulations.',
       image: 'https://res.cloudinary.com/dtol8lk5b/image/upload/v1774722181/Neon_Retro_Stars_Marketing_Mockup_Website_Instagram_Post_etqxaw.png',
       category: ['Full-Stack'],
       technologies: [ 'Spring Boot',],
       github: 'https://www.navitsa.com/products/application-software/vehicle-inspection-management-system/'
+    },
+    {
+  id: 3,
+  title: 'BOC Bank Digital Assistance & Feedback System',
+  description: 'QR-based ATM/CRM guidance system, a feedback app and a secure admin dashboard with real-time analytics.',
+  image: 'https://res.cloudinary.com/dtol8lk5b/image/upload/v1749293079/Neon_Retro_Stars_Marketing_Mockup_Website_Instagram_Post_4_maeagv.png',
+  category: ['Full-Stack'],
+  technologies: ['React', 'Supabase', 'Chart.js'],
+  github: '#' 
+},
+    {
+      id: 2,
+      title: 'Promender – Property Safety Compliance Platform',
+      description: 'Modern web platform for streamlining property safety compliance for landlords and property managers in Australia. Features service-based compliance system for electrical inspections, gas safety checks, and smoke alarm compliance. Includes clean responsive UI, service selection with cost calculation, and professional landing pages with strong UX principles.',
+      image: 'https://res.cloudinary.com/dtol8lk5b/image/upload/v1774724880/Neon_Retro_Stars_Marketing_Mockup_Website_Instagram_Post_1_upexdp.png',
+      category: ['Frontend', 'Full-Stack'],
+      technologies: ['React', 'Spring Boot', 'Azure', 'CICD'],
+      live: '#'
     },
         {
       id: 4,
@@ -51,16 +69,7 @@ const Projects: React.FC = () => {
       github: 'https://github.com/Ravindupereraofficial/LibraEase-Library-Management-System'
     },
     {
-  id: 6,
-  title: 'BOC Bank Digital Assistance & Feedback System',
-  description: 'QR-based ATM/CRM guidance system, a feedback app and a secure admin dashboard with real-time analytics.',
-  image: 'https://res.cloudinary.com/dtol8lk5b/image/upload/v1749293079/Neon_Retro_Stars_Marketing_Mockup_Website_Instagram_Post_4_maeagv.png',
-  category: ['Full-Stack'],
-  technologies: ['React', 'Supabase', 'Chart.js'],
-  github: '#' 
-},
-    {
-      id: 1,
+      id: 6,
       title: 'Mos Burger',
       description: 'A restaurant management system with online ordering capabilities, reservation management, and admin dashboard.',
       image: 'https://res.cloudinary.com/dtol8lk5b/image/upload/v1749293079/Neon_Retro_Stars_Marketing_Mockup_Website_Instagram_Post_bsphtv.png',
@@ -70,7 +79,7 @@ const Projects: React.FC = () => {
       live: '#'
     },
     {
-      id: 2,
+      id: 7,
       title: 'Ecomerce Grocery Delivery App',
       description: 'Ecomerce grocery delivery application with real-time tracking and order management.',
       image: 'https://res.cloudinary.com/dtol8lk5b/image/upload/v1749293079/Neon_Retro_Stars_Marketing_Mockup_Website_Instagram_Post_3_eietua.png',
@@ -80,7 +89,7 @@ const Projects: React.FC = () => {
       live: '#'
     },
     {
-      id: 3,
+      id: 8,
       title: 'Askify',
       description: 'Q&A platform for developers with markdown support, voting system and user reputation.',
       image: 'https://res.cloudinary.com/dtol8lk5b/image/upload/v1749293078/Neon_Retro_Stars_Marketing_Mockup_Website_Instagram_Post_1_fdut1s.png',
@@ -96,15 +105,35 @@ const Projects: React.FC = () => {
   const [filter, setFilter] = useState('All');
   const categories = ['All', 'Frontend', 'Backend'];
 
-
-  // Filter projects based on selected category
-  const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category.includes(filter));
-
-  // Show only 3 projects by default, show all if toggled
+  // Always pin the first 6 projects at the top
+  const top6Projects = projects.slice(0, 6);
+  
+  // Filter remaining projects based on selected category
+  const filteredRemaining = filter === 'All' 
+    ? projects.slice(6) // All projects from index 6 onwards
+    : projects.slice(6).filter(project => project.category.includes(filter)); // Filter remaining projects
+  
   const [showAllProjects, setShowAllProjects] = useState(false);
-  const visibleProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, 3);
+  
+  // Show 6 additional projects when "See More" is clicked
+  const visibleRemaining = showAllProjects 
+    ? filteredRemaining.slice(0, 6) // Show only 6 more projects
+    : [];
+  
+  const visibleProjects = [...top6Projects, ...visibleRemaining];
+  
+  // Check if there are more projects to show
+  const hasMoreProjects = filteredRemaining.length > 0;
+
+  // State to track expanded descriptions
+  const [expandedDescriptions, setExpandedDescriptions] = useState<{ [key: number]: boolean }>({});
+
+  const toggleDescriptionExpand = (projectId: number) => {
+    setExpandedDescriptions((prev) => ({
+      ...prev,
+      [projectId]: !prev[projectId]
+    }));
+  };
 
   return (
     <section id="projects" className="section-padding bg-light-200 dark:bg-dark-700">
@@ -188,9 +217,9 @@ const Projects: React.FC = () => {
                   </div>
                   {/* Glassmorphism overlay for details on hover */}
                   <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                    <div className="bg-white/70 dark:bg-dark-800/80 backdrop-blur-md rounded-xl p-4 shadow-lg">
-                      <h3 className="text-lg font-bold mb-1 text-dark-900 dark:text-light-200">{project.title}</h3>
-                      <p className="text-sm text-dark-600 dark:text-light-400 mb-2">{project.description}</p>
+                    <div className="bg-white/90 dark:bg-dark-800/90 backdrop-blur-md rounded-xl p-4 shadow-lg">
+                      <h3 className="text-lg font-bold mb-2 text-dark-900 dark:text-light-200">{project.title}</h3>
+                      <p className="text-xs text-dark-600 dark:text-light-400 mb-3 line-clamp-3">{project.description}</p>
                       <div className="flex flex-wrap gap-2 mb-2">
                         {project.technologies.map((tech, techIndex) => (
                           <span 
@@ -225,7 +254,17 @@ const Projects: React.FC = () => {
                     {project.title}
                     {project.live && <span className="ml-1 inline-block w-2 h-2 bg-green-400 rounded-full animate-pulse" title="Live" />}
                   </h3>
-                  <p className="text-dark-600 dark:text-light-400 mb-4 line-clamp-3 min-h-[48px]">{project.description}</p>
+                  <p className={`text-dark-600 dark:text-light-400 mb-2 ${expandedDescriptions[project.id] ? '' : 'line-clamp-3'}`}>
+                    {project.description}
+                  </p>
+                  {project.description.length > 100 && (
+                    <button
+                      onClick={() => toggleDescriptionExpand(project.id)}
+                      className="text-sm text-primary-600 dark:text-primary-400 font-semibold hover:underline mb-4 transition-colors"
+                    >
+                      {expandedDescriptions[project.id] ? 'See Less' : 'See More'}
+                    </button>
+                  )}
                   <div className="flex flex-wrap gap-2 mb-2">
                     {project.technologies.map((tech, techIndex) => (
                       <span 
@@ -282,7 +321,7 @@ const Projects: React.FC = () => {
         </div>
 
         {/* See More / See Less Button */}
-        {filteredProjects.length > 3 && (
+        {hasMoreProjects && (
           <div className="flex justify-center mt-8">
             <motion.button
               onClick={() => setShowAllProjects((prev) => !prev)}
